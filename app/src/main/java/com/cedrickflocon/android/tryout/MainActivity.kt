@@ -1,14 +1,17 @@
 package com.cedrickflocon.android.tryout
 
-import android.app.Activity
 import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.text.BasicText
 
-class MainActivity : Activity() {
+class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
+        setContent {
+            BasicText("Hello world")
+        }
     }
 
 }
