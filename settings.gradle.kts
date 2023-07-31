@@ -1,7 +1,11 @@
 rootProject.name = "Android Tryout"
 
-apply {
-    from("gradle/catalog.gradle.kts")
+dependencyResolutionManagement {
+    versionCatalogs {
+        create("libs") {
+            from(files("gradle/catalog.toml"))
+        }
+    }
 }
 
 include(":app")

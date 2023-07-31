@@ -1,12 +1,12 @@
 plugins {
-    id("com.android.application")
-    id("kotlin-android")
+    id(libs.plugins.android.application.get().pluginId)
+    id(libs.plugins.kotlin.android.get().pluginId)
 }
 
 android {
-    compileSdk = app.versions.compile.sdk.get().toInt()
+    compileSdk = libs.versions.android.compile.sdk.get().toInt()
     defaultConfig {
-        minSdk = app.versions.min.sdk.get().toInt()
+        minSdk = libs.versions.android.min.sdk.get().toInt()
         versionName = "1.0.0"
         versionCode = 1
     }
@@ -16,7 +16,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
+        kotlinCompilerExtensionVersion = libs.versions.androidx.compose.compiler.get()
     }
 
     kotlinOptions {
@@ -25,7 +25,7 @@ android {
 }
 
 dependencies {
-    implementation(platform(libs.compose.bom))
-    implementation(libs.compose.foundation)
-    implementation(libs.compose.activity)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.foundation)
+    implementation(libs.androidx.activity.compose)
 }
