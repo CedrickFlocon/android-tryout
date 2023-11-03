@@ -21,6 +21,10 @@ android {
         kotlinCompilerExtensionVersion = libs.versions.androidx.compose.compiler.get()
     }
 
+    lintOptions {
+        isAbortOnError = true
+    }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }

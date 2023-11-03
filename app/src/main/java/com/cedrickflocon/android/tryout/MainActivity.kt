@@ -9,6 +9,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //getString(R.string.test, "hello")
         setContent {
             BasicText("Hello world")
         }
