@@ -28,6 +28,6 @@ android {
 
 dependencies {
     implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.compose.foundation)
-    implementation(libs.androidx.activity.compose)
+    implementation(libs.bundles.compose)
+    implementation(libs.bundles.compose.tv)
 }
