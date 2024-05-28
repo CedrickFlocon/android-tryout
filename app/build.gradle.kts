@@ -1,6 +1,7 @@
 plugins {
     id(libs.plugins.android.application.get().pluginId)
     id(libs.plugins.kotlin.android.get().pluginId)
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
@@ -11,14 +12,6 @@ android {
         minSdk = libs.versions.android.min.sdk.get().toInt()
         versionName = "1.0.0"
         versionCode = 1
-    }
-
-    buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.androidx.compose.compiler.get()
     }
 
     kotlinOptions {
