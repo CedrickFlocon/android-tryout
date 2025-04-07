@@ -1,0 +1,40 @@
+name: Issue comment
+
+on:
+  issue_comment
+
+jobs:
+  issue-comment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: pull request ref
+        if: ${{ github.event.pull_request }}
+        run: echo "CHECKOUT_REF=${{  github.base_ref || github.event.merge_group.base_ref }}" >> $GITHUB_ENV
+
+      - name: issue comment ref
+        if: ${{ github.event.issue.pull_request }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh pr view ${{ github.event.issue.number }} --repo ${{ github.repository }} --json additions,assignees,author,autoMergeRequest,baseRefName,baseRefOid,body,changedFiles,closed,closedAt,comments,commits,createdAt,deletions,files,fullDatabaseId,headRefName,headRefOid,headRepository,headRepositoryOwner,id,isCrossRepository,isDraft,labels,latestReviews,maintainerCanModify,mergeCommit,mergeStateStatus,mergeable,mergedAt,mergedBy,milestone,number,potentialMergeCommit,projectCards,projectItems,reactionGroups,reviewDecision,reviewRequests,reviews,state,statusCheckRollup,title,updatedAt,url
+          echo "CHECKOUT_REF=refs/pull/${{ github.event.issue.number }}/head" >> $GITHUB_ENV
+          echo "PR_ID=${{ github.event.issue.number }}" >> $GITHUB_ENV
+          echo "PR_TITLE=$(gh pr view ${{ github.event.issue.number }} --repo ${{ github.repository }} --json title --jq '.title')" >> $GITHUB_ENV
+          echo "BRANCH_NAME=$(gh pr view ${{ github.event.issue.number }} --repo ${{ github.repository }} --json headRefName --jq '.headRefName')" >> $GITHUB_ENV
+          echo "TARGET_BRANCH_NAME=$(gh pr view ${{ github.event.issue.number }} --repo ${{ github.repository }} --json baseRefName --jq '.baseRefName')" >> $GITHUB_ENV
+          echo "COMMIT_SHA1=toto" >> $GITHUB_ENV
+
+      - name: TEST ENV
+        run: |
+          echo $CHECKOUT_REF
+          echo $PR_ID
+          echo $PR_TITLE
+          echo $BRANCH_NAME
+          echo $TARGET_BRANCH_NAME
+          echo $COMMIT_SHA1
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.CHECKOUT_REF }}
