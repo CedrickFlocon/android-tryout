@@ -1,7 +1,7 @@
 [versions]
 android-min-sdk = "25"
 android-compile-sdk = "35"
-android-gradle-plugin = "8.9.2"
+android-gradle-plugin = "8.10.0"
 androidx-activity = "1.10.1"
 androidx-compose-bom = "2025.04.01"
 androidx-tv = "1.0.0-alpha12"
