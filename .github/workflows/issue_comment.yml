@@ -1,0 +1,19 @@
+name: Pull Request
+
+on:
+  issue_comment:
+    types: [ created ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Context file
+        env:
+          CONTEXT: ${{ toJson(github) }}
+        shell: bash
+        run: |
+          printf '%s\n' "$CONTEXT" > context.json
+          cat context.json
