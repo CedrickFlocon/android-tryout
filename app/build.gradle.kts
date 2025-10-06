@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "com.cedrickflocon.android.tryout"
+    namespace = "com.cedrickflocon.android.playground"
 
     compileSdk = libs.versions.android.compile.sdk.get().toInt()
     defaultConfig {

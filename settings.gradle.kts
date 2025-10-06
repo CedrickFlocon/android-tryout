@@ -1,4 +1,4 @@
-rootProject.name = "Android Tryout"
+rootProject.name = "Android Playground"
 
 dependencyResolutionManagement {
     versionCatalogs {

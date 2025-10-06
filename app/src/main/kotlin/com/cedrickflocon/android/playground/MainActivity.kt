@@ -1,4 +1,4 @@
-package com.cedrickflocon.android.tryout
+package com.cedrickflocon.android.playground
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

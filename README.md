@@ -1,2 +1,2 @@
-# android-tryout
-Android Tryout project
+# android-playground
+Android Playground project
